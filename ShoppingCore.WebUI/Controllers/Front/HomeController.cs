@@ -15,17 +15,18 @@ namespace ShoppingCore.WebUI.Controllers.Front
     public class HomeController : Controller
     {
 
-        private IProductServices productServices;
+       
+        private readonly IProductServices ps;
 
-        public HomeController(IProductServices productServices)
+        public HomeController(IProductServices ps)
         {
-            this.productServices = productServices;
+            this.ps = ps;
         }
-
         public IActionResult Index()
         {
-           
-            return View(productServices.GetAll());
+            // var products = ps.GetAll().Where(i=>i.IsApproved&& i.IsHome).ToList();
+            var products = ps.GetAll();
+            return View(products);
         }
     }
 }

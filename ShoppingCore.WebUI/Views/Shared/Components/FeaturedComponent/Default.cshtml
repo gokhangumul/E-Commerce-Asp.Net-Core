@@ -1,0 +1,20 @@
+﻿@model List<Product>
+<div class="widget">
+    <h4>FEATURED</h4>
+    <div class="products-list">
+        @foreach (var item in Model)
+        {
+            <div class="media">
+                <a class="media-left" href="#">
+                    <img alt="" class="img-responsive product-thumb" src="~/Content/img/productimg/productimgth/@item.ImagePath">
+                </a>
+                <div class="media-body">
+                    <a href="#" class="product-title">@item.ProductName</a>
+                    <p class="product-price">$@item.ProductPrice</p>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>

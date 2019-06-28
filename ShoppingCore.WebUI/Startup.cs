@@ -5,8 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ShoppingCore.BusinessLayer.Abstract;
 using ShoppingCore.BusinessLayer.Concrete;
+using ShoppingCore.DataAccessLayer.Abstract;
 using ShoppingCore.DataAccessLayer.Concrete.EfCore.Context;
 using ShoppingCore.DataAccessLayer.Concrete.EfCore.Repository;
+using ShoppingCore.EntityLayer.DbModels;
+
 namespace ShoppingCore.WebUI
 {
     public class Startup
@@ -22,11 +25,19 @@ namespace ShoppingCore.WebUI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-           
+   
             services.AddDbContext<ShopContext>
                 (options => options.UseSqlServer
                 (configuration.GetConnectionString
                 ("DefaultConnection"), b => b.MigrationsAssembly("ShoppingCore.WebUI")));
+           //services.AddTransient<IServices<Product>, ProductManager>();
+          //  services.AddTransient<IServices<Category>, GenericManager<Category>>();
+            //services.AddTransient<IGenericRepository<Category>, GenericRepository<Category>>();
+           // services.AddTransient<IGenericRepository<Product>, ProductRepository>();
+            services.AddTransient<IProductServices, ProductManager>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ICategoryServices, CategoryManager>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddMvc();
         }
 

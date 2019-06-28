@@ -1,0 +1,30 @@
+[
+  {
+    "outputFileName": "wwwroot/Content/js/bundle.js",
+    "inputFiles": [
+      "wwwroot/Content/js/jquery.min.js",
+      "wwwroot/Content/js/bootstrap.min.js",
+      "wwwroot/Content/js/bootstrap-hover-dropdown.js",
+      "wwwroot/Content/js/wow.min.js",
+      "wwwroot/Content/js/imagesloaded.pkgd.min.js",
+      "wwwroot/Content/js/SmoothScroll.min.js",
+      "wwwroot/Content/js/waypoints.min.js",
+      "wwwroot/Content/js/jquery.counterup.min.js",
+      "wwwroot/Content/js/modernizr.js",
+      "wwwroot/Content/js/main.js",
+      "wwwroot/Content/js/owl.carousel.js",
+      "wwwroot/Content/js/jquery.filterizr.js",
+      "wwwroot/Content/js/edura.js",
+      "wwwroot/Content/js/demo.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/Content/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/Content/css/style.css",
+      "wwwroot/Content/css/lunar.css",
+      "wwwroot/Content/css/custom.css",
+      "wwwroot/Content/css/demo.css"
+    ]
+  }
+]

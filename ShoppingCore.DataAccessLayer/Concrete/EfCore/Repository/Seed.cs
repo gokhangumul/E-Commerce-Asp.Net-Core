@@ -20,10 +20,39 @@ namespace ShoppingCore.DataAccessLayer.Concrete.EfCore.Repository
             {
                 var products = new[]
                 {
-                    new Product(){ProductName="Apple",ProductPrice=1000},
-                    new Product(){ProductName="Samsung",ProductPrice=1000},
-                    new Product(){ProductName="Polo", ProductPrice=2000},
-                    new Product(){ProductName="Counter Strike", ProductPrice=500}
+                    new Product(){
+                        ProductName ="Apple",
+                        ProductPrice =1000,
+                        ImagePath ="product1.jpg",
+                        ProductDescription ="Description1",
+                        HtmlContent ="<b>Html Content1 </b>",
+                        CreatedTime=DateTime.Now.AddDays(-10)
+                    },
+                    new Product(){
+                        ProductName ="Samsung",
+                        ProductPrice =1000,
+                        ImagePath ="product2.jpg",
+                        ProductDescription ="Description2",
+                        HtmlContent ="<b>Html Content2</b>",
+                        CreatedTime=DateTime.Now.AddDays(-9)
+                    },
+                    new Product(){
+                        ProductName ="Polo",
+                        ProductPrice =1000,
+                        ImagePath ="product3.jpg",
+                        ProductDescription ="Description3",
+                        HtmlContent ="<b>Html Content3 </b>",
+                        CreatedTime=DateTime.Now.AddDays(-5)
+                    },
+                    new Product(){
+                        ProductName ="Counter Strike",
+                        ProductPrice =1000,
+                        ImagePath ="product4.jpg",
+                        ProductDescription ="Description4",
+                        HtmlContent ="<b>Html Content4 </b>",
+                        CreatedTime=DateTime.Now.AddDays(-3)
+                    }
+                  
                 };
                 shopContext.Products.AddRange(products);
                 var categories = new[]
@@ -42,6 +71,11 @@ namespace ShoppingCore.DataAccessLayer.Concrete.EfCore.Repository
                     new ProductCategory(){Product=products[3],Category=categories[2]},
                 };
                 shopContext.AddRange(prcategories);
+                var pattribute = new[]
+                {
+                    new ProductAttribute(){Attribute="Display", Value="15.6",Product=products[0]},
+
+                };
                 shopContext.SaveChanges();
             }
 

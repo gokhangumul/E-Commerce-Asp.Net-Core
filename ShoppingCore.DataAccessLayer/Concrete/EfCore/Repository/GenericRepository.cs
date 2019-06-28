@@ -10,11 +10,11 @@ namespace ShoppingCore.DataAccessLayer.Concrete.EfCore.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly ShopContext shop;
+        public readonly ShopContext shopContext;
         private DbSet<T> entities;
         public GenericRepository(ShopContext shop)
         {
-            this.shop = shop;
+            this.shopContext = shop;
             entities = shop.Set<T>();
         }
         public T Add(T entity)
@@ -45,6 +45,11 @@ namespace ShoppingCore.DataAccessLayer.Concrete.EfCore.Repository
         public List<T> GetAll(System.Linq.Expressions.Expression<Func<T, bool>> expression)
         {
             throw new NotImplementedException();
+        }
+
+        public void Save()
+        {
+            shopContext.SaveChanges();
         }
 
         public T Update(T entity)

@@ -14,5 +14,6 @@ namespace ShoppingCore.DataAccessLayer.Abstract
         bool Delete(int id);
         bool Delete(T entity);
         T Update(T entity);
+        void Save();
     }
 }

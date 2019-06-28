@@ -1,47 +1,92 @@
-﻿@model IEnumerable<ShoppingCore.EntityLayer.DbModels.Product>
+﻿@model List<Product>
+<section id="content">
+    <section id="shop" class="container">
+        <div class="row">
+            <!-- sidebar start -->
+            <div id="sidebar" class="col-md-3">
+                <div class="widget">
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-lg" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-lg" type="submit"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+             
+                @await Component.InvokeAsync("CategoryComponent")
+                @await Component.InvokeAsync("FeaturedComponent")
+               
 
-@{
-    ViewData["Title"] = "Index";
-}
+            </div>
+            <!-- sidebar end -->
+            <!-- right column start -->
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12 wow fadeIn">
+                        <div class="row product-results">
+                            <div class="product-results">
+                                <div class="col-xs-8">
+                                    <p class="woocommerce-result-count">Showing @Model.Count() results</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 wow fadeInUp">
+                            <div class="text-center product-item">
+                                <div class="product-item-top">
+                                    <img alt="" class="img-responsive" src="~/Content/img/productimg/productimgth/@item.ImagePath">
+                                    <div class="mask"></div>
+                                    <ul class="list-unstyled list-inline">
+                                        <li><a href="#"><i class="fa fa-link fa-fw"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-cart-plus fa-fw"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product-item-inner">
+                                    <h3 class="product-title"><a href="#">@item.ProductName</a></h3>
+                                    <p class="product-price">@item.ProductPrice</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductPrice)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductPrice)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+                    <div class="col-md-12 wow fadeIn">
+                        <div id="pagination" class="row text-center">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <li class="disabled">
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li class="disabled"><a href="#">...</a></li>
+                                    <li><a href="#">20</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- right column end -->
+        </div>
+
+    </section>
+
+</section>

@@ -37,6 +37,14 @@ namespace ShoppingCore.WebUI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("ImagePath");
+
+                    b.Property<bool>("IsApproved");
+
+                    b.Property<bool>("IsFeatured");
+
+                    b.Property<bool>("IsHome");
+
                     b.Property<string>("ProductName");
 
                     b.Property<double>("ProductPrice");
