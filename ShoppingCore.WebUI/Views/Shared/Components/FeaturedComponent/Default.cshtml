@@ -9,7 +9,7 @@
                     <img alt="" class="img-responsive product-thumb" src="~/Content/img/productimg/productimgth/@item.ImagePath">
                 </a>
                 <div class="media-body">
-                    <a href="#" class="product-title">@item.ProductName</a>
+                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@item.Id" class="product-title">@item.ProductName</a>
                     <p class="product-price">$@item.ProductPrice</p>
                 </div>
             </div>

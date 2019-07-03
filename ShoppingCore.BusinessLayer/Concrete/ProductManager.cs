@@ -1,6 +1,7 @@
 ﻿using ShoppingCore.BusinessLayer.Abstract;
 using ShoppingCore.DataAccessLayer.Abstract;
 using ShoppingCore.EntityLayer.DbModels;
+using ShoppingCore.EntityLayer.PocoModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,21 @@ namespace ShoppingCore.BusinessLayer.Concrete
 {
     public class ProductManager : GenericManager<Product>,IProductServices
     {
-        IProductRepository rp;
+        private readonly IProductRepository rp;
 
         public ProductManager(IProductRepository rp) : base(rp)
         {
             this.rp=rp;
         }
 
-        public List<Product> GetAllWithCategory()
+        public IQueryable<Product> GetWithCategory(string category)
         {
-            return rp.GetAllWithCategory();
+            return rp.GetWithCategory(category);
+        }
+
+        public PocoProduct GetWithCategoryAndAtt(int id)
+        {
+            return rp.GetWithCategoryAndAtt(id);
         }
     }
 }

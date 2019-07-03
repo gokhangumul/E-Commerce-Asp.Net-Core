@@ -1,4 +1,7 @@
-﻿@model List<Product>
+﻿@model ProductListModel
+@{
+    ViewData["Title"] = "List";
+}
 <section id="content">
     <section id="shop" class="container">
         <div class="row">
@@ -14,10 +17,10 @@
                         </div>
                     </form>
                 </div>
-             
+
                 @await Component.InvokeAsync("CategoryComponent")
                 @await Component.InvokeAsync("FeaturedComponent")
-               
+
 
             </div>
             <!-- sidebar end -->
@@ -28,13 +31,13 @@
                         <div class="row product-results">
                             <div class="product-results">
                                 <div class="col-xs-8">
-                                    <p class="woocommerce-result-count">Showing @Model.Count() results</p>
+                                    <p class="woocommerce-result-count">Showing @Model.PagingInfo.Total results</p>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Products)
                     {
                         <div class="col-md-4 wow fadeInUp">
                             <div class="text-center product-item">
@@ -56,32 +59,12 @@
 
 
 
+                        <div class="col-md-12 wow fadeIn">
+                            <div page-model="@Model.PagingInfo" page-action="List">
 
-                    <div class="col-md-12 wow fadeIn">
-                        <div id="pagination" class="row text-center">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                    <li class="disabled">
-                                        <a href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                        </a>
-                                    </li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li class="disabled"><a href="#">...</a></li>
-                                    <li><a href="#">20</a></li>
-                                    <li>
-                                        <a href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            </div>
                         </div>
-                    </div>
+              
                 </div>
             </div>
             <!-- right column end -->

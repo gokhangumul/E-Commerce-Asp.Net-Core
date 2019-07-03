@@ -34,17 +34,26 @@ namespace ShoppingCore.DataAccessLayer.Concrete.EfCore.Repository
 
         public T Get(int id)
         {
-            throw new NotImplementedException();
+            return entities.Find(id);
         }
 
-        public List<T> GetAll()
+        public IQueryable<T> GetAll()
         {
-            return entities.ToList();
+            try
+            {
+                return entities;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+           
         }
 
         public List<T> GetAll(System.Linq.Expressions.Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return entities.Where(expression).ToList();
         }
 
         public void Save()

@@ -71,11 +71,16 @@ namespace ShoppingCore.DataAccessLayer.Concrete.EfCore.Repository
                     new ProductCategory(){Product=products[3],Category=categories[2]},
                 };
                 shopContext.AddRange(prcategories);
+
                 var pattribute = new[]
                 {
                     new ProductAttribute(){Attribute="Display", Value="15.6",Product=products[0]},
+                     new ProductAttribute(){Attribute="Display", Value="15.6",Product=products[0]},
+                      new ProductAttribute(){Attribute="Display", Value="15.6",Product=products[0]},
+                       new ProductAttribute(){Attribute="Display", Value="15.6",Product=products[0]}
 
                 };
+                shopContext.ProductAttributes.AddRange(pattribute);
                 shopContext.SaveChanges();
             }
 

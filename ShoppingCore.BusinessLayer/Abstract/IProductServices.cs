@@ -1,4 +1,5 @@
 ﻿using ShoppingCore.EntityLayer.DbModels;
+using ShoppingCore.EntityLayer.PocoModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace ShoppingCore.BusinessLayer.Abstract
 {
     public interface IProductServices:IServices<Product>
     {
-        List<Product> GetAllWithCategory();
+        PocoProduct GetWithCategoryAndAtt(int id);
+        IQueryable<Product> GetWithCategory(string category);
+        
     }
 }

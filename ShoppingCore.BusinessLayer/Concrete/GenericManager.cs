@@ -3,6 +3,7 @@ using ShoppingCore.DataAccessLayer.Abstract;
 using ShoppingCore.EntityLayer.DbModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -32,17 +33,17 @@ namespace ShoppingCore.BusinessLayer.Concrete
 
         public T Get(int id)
         {
-            throw new NotImplementedException();
+            return genericRepository.Get(id);
         }
 
-        public List<T> GetAll()
+        public IQueryable<T> GetAll()
         {
             return genericRepository.GetAll();
         }
 
         public List<T> GetAll(Expression<Func<T, bool>> expression)
         {
-            throw new NotImplementedException();
+            return genericRepository.GetAll(expression);
         }
 
         public void Save()

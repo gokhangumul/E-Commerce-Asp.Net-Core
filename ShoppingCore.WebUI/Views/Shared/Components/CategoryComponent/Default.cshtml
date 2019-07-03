@@ -5,7 +5,12 @@
     <ul class="list-unstyled link-list">
         @foreach (var item in Model)
         {
-            <li><i class="fa fa-angle-right fa-fw" aria-hidden="true"></i> <a href="#">@item.CategoryName <span class="pull-right">(@item.ProductCount)</span></a></li>
+            <li>
+                 <i class="fa fa-angle-right fa-fw" aria-hidden="true"></i>
+                 <a asp-action="List" asp-controller="Home" asp-route-category="@item.CategoryName">@item.CategoryName 
+                 <span class="pull-right">(@item.ProductCount)</span>
+                 </a>
+             </li>
 
         }
 

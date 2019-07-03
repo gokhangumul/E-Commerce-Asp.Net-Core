@@ -30,10 +30,12 @@ namespace ShoppingCore.WebUI
                 (options => options.UseSqlServer
                 (configuration.GetConnectionString
                 ("DefaultConnection"), b => b.MigrationsAssembly("ShoppingCore.WebUI")));
-           //services.AddTransient<IServices<Product>, ProductManager>();
-          //  services.AddTransient<IServices<Category>, GenericManager<Category>>();
+            //services.AddTransient<IServices<Product>, ProductManager>();
+            //  services.AddTransient<IServices<Category>, GenericManager<Category>>();
             //services.AddTransient<IGenericRepository<Category>, GenericRepository<Category>>();
-           // services.AddTransient<IGenericRepository<Product>, ProductRepository>();
+            // services.AddTransient<IGenericRepository<Product>, ProductRepository>();
+            services.AddTransient<IServices<Image>, GenericManager<Image>>();
+            services.AddTransient<IGenericRepository<Image>, GenericRepository<Image>>();
             services.AddTransient<IProductServices, ProductManager>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ICategoryServices, CategoryManager>();
@@ -53,6 +55,12 @@ namespace ShoppingCore.WebUI
             app.UseStaticFiles();
             app.UseMvc(route =>
             {
+                route.MapRoute(
+                  name: "products",
+                  template: "products/{category?}",
+                  defaults:new {controller="Home", action="List"}
+                  );
+
                 route.MapRoute(
                     name:"default",
                     template:"{controller=Home}/{action=Index}/{id?}"
